@@ -22,52 +22,91 @@ void main() {
               child: Image.asset('images/todo.png'),
             ),
           ),
-          Positioned(
+          Positioned.fill(
             top: 150,
-            child: Column(
-              children: [
-                Container(
-                  height: 70,
-                  width: 300,
-                  color: Colors.white,
-                  child: Column(
-                    children: [Text("Study lesson")],
-                  ),
+            child: Column(children: [
+              Container(
+                height: 70,
+                width: 300,
+                color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.add),
+                    Center(
+                      child: Column(
+                        children: [Center(child: Text("Study lesson"))],
+                      ),
+                    ),
+                  ],
                 ),
-                Container(
-                  height: 70,
-                  width: 300,
-                  color: Colors.white,
-                  child: Column(
-                    children: [Text("Run 5k"), Text("4.00 pm")],
-                  ),
+              ),
+
+              //Icon((AssetImage("images/run.png"))),
+              Container(
+                height: 70,
+                width: 300,
+                color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.add),
+                    Center(
+                      child: Column(
+                        children: [
+                          Center(child: Text("Run 5k")),
+                          Text("4.00 pm")
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                Container(
-                  height: 70,
-                  width: 300,
-                  color: Colors.white,
-                  child: Column(
-                    children: [Text("Go to Party"), Text("10.00 pm")],
-                  ),
+              ),
+
+              Container(
+                height: 70,
+                width: 300,
+                color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.add),
+                    Column(
+                      children: [
+                        Center(child: Text("Go to Party")),
+                        Text("10.00 pm")
+                      ],
+                    ),
+                  ],
                 ),
-                Positioned(
-                  child: InkWell(
-                    onTap: (() {}),
-                    child: Container(
-                        height: 30,
-                        width: 300,
-                        decoration: BoxDecoration(
-                          color: Color(0xff3d84d9),
-                          borderRadius: BorderRadius.circular(53.19),
-                        ),
-                        child: Center(
-                          child: Text("Add new Task"),
-                        )),
-                  ),
+              ),
+              Text("COMPLETED"),
+              //Spacer(),
+              Positioned(
+                top: 700,
+                child: InkWell(
+                  onTap: (() {}),
+                  child: Container(
+                      height: 30,
+                      width: 300,
+                      decoration: BoxDecoration(
+                        color: Color(0xff3d84d9),
+                        borderRadius: BorderRadius.circular(53.19),
+                      ),
+                      child: Center(
+                        child: Text("Add new Task"),
+                      )),
                 ),
-              ],
-            ),
+              ),
+            ]),
           ),
+          Positioned(
+              top: 500,
+              child: Container(
+                height: 70,
+                width: 300,
+                color: Colors.amberAccent,
+              )),
         ],
       ),
     ),
