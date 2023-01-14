@@ -23,22 +23,49 @@ void main() {
             ),
           ),
           Positioned(
-            top: 500,
-            left: 100,
-            right: 100,
-            bottom: 10,
-            child: InkWell(
-              onTap: (() {}),
-              child: Container(
-                  height: 30,
-                  width: 50,
-                  decoration: BoxDecoration(
-                    color: Color(0xff3d84d9),
-                    borderRadius: BorderRadius.circular(53.19),
+            top: 150,
+            child: Column(
+              children: [
+                Container(
+                  height: 70,
+                  width: 300,
+                  color: Colors.white,
+                  child: Column(
+                    children: [Text("Study lesson")],
                   ),
-                  child: Center(
-                    child: Text("Add new Task"),
-                  )),
+                ),
+                Container(
+                  height: 70,
+                  width: 300,
+                  color: Colors.white,
+                  child: Column(
+                    children: [Text("Run 5k"), Text("4.00 pm")],
+                  ),
+                ),
+                Container(
+                  height: 70,
+                  width: 300,
+                  color: Colors.white,
+                  child: Column(
+                    children: [Text("Go to Party"), Text("10.00 pm")],
+                  ),
+                ),
+                Positioned(
+                  child: InkWell(
+                    onTap: (() {}),
+                    child: Container(
+                        height: 30,
+                        width: 300,
+                        decoration: BoxDecoration(
+                          color: Color(0xff3d84d9),
+                          borderRadius: BorderRadius.circular(53.19),
+                        ),
+                        child: Center(
+                          child: Text("Add new Task"),
+                        )),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
