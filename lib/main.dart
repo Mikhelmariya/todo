@@ -33,14 +33,30 @@ void main() {
                 color: Colors.white,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    Spacer(
+                      flex: 1,
+                    ),
                     Icon(Icons.add),
+                    Spacer(
+                      flex: 1,
+                    ),
                     Center(
                       child: Column(
                         children: [Center(child: Text("Study lesson"))],
                       ),
                     ),
+                    // SizedBox(
+                    //  width: 10,
+                    // ),
+                    Spacer(
+                      flex: 1,
+                    ),
                     Checkbox(value: true, onChanged: ((value) {})),
+                    Spacer(
+                      flex: 1,
+                    ),
                   ],
                 ),
               ),
@@ -53,7 +69,13 @@ void main() {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Spacer(
+                      flex: 1,
+                    ),
                     Icon(Icons.add),
+                    Spacer(
+                      flex: 1,
+                    ),
                     Center(
                       child: Column(
                         children: [
@@ -62,7 +84,13 @@ void main() {
                         ],
                       ),
                     ),
+                    Spacer(
+                      flex: 1,
+                    ),
                     Checkbox(value: true, onChanged: ((value) {})),
+                    Spacer(
+                      flex: 1,
+                    ),
                   ],
                 ),
               ),
@@ -74,14 +102,26 @@ void main() {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Spacer(
+                      flex: 1,
+                    ),
                     Icon(Icons.add),
+                    Spacer(
+                      flex: 1,
+                    ),
                     Column(
                       children: [
                         Center(child: Text("Go to Party")),
                         Text("10.00 pm")
                       ],
                     ),
+                    Spacer(
+                      flex: 1,
+                    ),
                     Checkbox(value: true, onChanged: ((value) {})),
+                    Spacer(
+                      flex: 1,
+                    ),
                   ],
                 ),
               ),
