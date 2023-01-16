@@ -11,6 +11,8 @@ void main() {
         children: [
           Container(
             color: Color(0xfff6f5f8),
+            width: 546,
+            height: 820,
           ),
           Positioned(
             top: 0,
@@ -27,7 +29,7 @@ void main() {
             child: Column(children: [
               Container(
                 height: 70,
-                width: 300,
+                width: 364.9,
                 color: Colors.white,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -45,7 +47,7 @@ void main() {
               //Icon((AssetImage("images/run.png"))),
               Container(
                 height: 70,
-                width: 300,
+                width: 364.9,
                 color: Colors.white,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -65,7 +67,7 @@ void main() {
 
               Container(
                 height: 70,
-                width: 300,
+                width: 364.9,
                 color: Colors.white,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -82,23 +84,23 @@ void main() {
               ),
               Text("COMPLETED"),
               //Spacer(),
-              Positioned(
-                top: 700,
-                child: InkWell(
-                  onTap: (() {}),
-                  child: Container(
-                      height: 30,
-                      width: 300,
-                      decoration: BoxDecoration(
-                        color: Color(0xff3d84d9),
-                        borderRadius: BorderRadius.circular(53.19),
-                      ),
-                      child: Center(
-                        child: Text("Add new Task"),
-                      )),
-                ),
-              ),
             ]),
+          ),
+          Positioned(
+            bottom: 0,
+            child: InkWell(
+              onTap: (() {}),
+              child: Container(
+                  height: 59.58,
+                  width: 364.96,
+                  decoration: BoxDecoration(
+                    color: Color(0xff3d84d9),
+                    borderRadius: BorderRadius.circular(53.19),
+                  ),
+                  child: Center(
+                    child: Text("Add new Task"),
+                  )),
+            ),
           ),
           Positioned(
               top: 500,
