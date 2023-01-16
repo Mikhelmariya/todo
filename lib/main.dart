@@ -2,158 +2,160 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:todo/widgets/tasklist.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: Scaffold(
-      body: Stack(
-        alignment: Alignment.topCenter,
-        children: [
-          Container(
-            color: Color(0xfff6f5f8),
-            width: 546,
-            height: 820,
-          ),
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 400,
-            child: FittedBox(
-              fit: BoxFit.fill,
-              child: Image.asset('images/todo.png'),
+  runApp(Homepage());
+}
+
+class Homepage extends StatelessWidget {
+  const Homepage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Stack(
+          alignment: Alignment.topCenter,
+          children: [
+            Container(
+              color: Color(0xfff6f5f8),
+              width: 546,
+              height: 820,
             ),
-          ),
-          Positioned.fill(
-            top: 150,
-            child: Column(children: [
-              Container(
-                height: 70,
-                width: 364.9,
-                color: Colors.white,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 400,
+              child: FittedBox(
+                fit: BoxFit.fill,
+                child: Image.asset('images/todo.png'),
+              ),
+            ),
+            Positioned(
+              child: SingleChildScrollView(
+                child: Column(
                   children: [
-                    Spacer(
-                      flex: 1,
-                    ),
-                    Image.asset('images/study.png'),
-                    Spacer(
-                      flex: 1,
-                    ),
-                    Center(
-                      child: Column(
-                        children: [Center(child: Text("Study lesson"))],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 30, bottom: 63),
+                      child: Text(
+                        "Task Manager",
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: Colors.white,
+                            fontSize: 17),
                       ),
                     ),
-                    // SizedBox(
-                    //  width: 10,
-                    // ),
-                    Spacer(
-                      flex: 1,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.arrow_back_ios_rounded,
+                              color: Colors.white,
+                            )),
+                        Text(
+                          "December",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontSize: 28),
+                        ),
+                        IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.arrow_forward_ios_rounded,
+                              color: Colors.white,
+                            )),
+                      ],
                     ),
-                    Checkbox(value: true, onChanged: ((value) {})),
-                    Spacer(
-                      flex: 1,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 17, vertical: 25),
+                      child: Container(
+                        height: 70 * 3,
+                        width: 364,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(17)),
+                        child: ListView.separated(
+                            separatorBuilder: (context, index) {
+                              return Divider(
+                                height: 1,
+                                color: Colors.grey,
+                              );
+                            },
+                            itemCount: 3,
+                            itemBuilder: ((context, index) {
+                              return TaskList();
+                            })),
+                      ),
                     ),
-                  ],
-                ),
-              ),
-
-              //Icon((AssetImage("images/run.png"))),
-              Container(
-                height: 70,
-                width: 364.9,
-                color: Colors.white,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Spacer(
-                      flex: 1,
-                    ),
-                    Image.asset('images/run.png'),
-                    Spacer(
-                      flex: 1,
-                    ),
-                    Center(
-                      child: Column(
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 70),
+                      child: Row(
                         children: [
-                          Center(child: Text("Run 5k")),
-                          Text("4.00 pm"),
+                          Text(
+                            "Completed",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
                         ],
                       ),
                     ),
-                    Spacer(
-                      flex: 1,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 17, vertical: 25),
+                      child: Container(
+                        height: 70 * 3,
+                        width: 364,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(17)),
+                        child: ListView.separated(
+                            separatorBuilder: (context, index) {
+                              return Divider(
+                                height: 1,
+                                color: Colors.grey,
+                              );
+                            },
+                            itemCount: 3,
+                            itemBuilder: ((context, index) {
+                              return TaskList();
+                            })),
+                      ),
                     ),
-                    Checkbox(value: true, onChanged: ((value) {})),
-                    Spacer(
-                      flex: 1,
-                    ),
-                  ],
-                ),
-              ),
-
-              Container(
-                height: 70,
-                width: 364.9,
-                color: Colors.white,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Spacer(
-                      flex: 1,
-                    ),
-                    Image.asset('images/party.png'),
-                    Spacer(
-                      flex: 1,
-                    ),
-                    Column(
-                      children: [
-                        Center(child: Text("Go to Party")),
-                        Text("10.00 pm")
-                      ],
-                    ),
-                    Spacer(
-                      flex: 1,
-                    ),
-                    Checkbox(value: true, onChanged: ((value) {})),
-                    Spacer(
-                      flex: 1,
+                    SizedBox(
+                      height: 250,
                     ),
                   ],
                 ),
               ),
-              Text("COMPLETED"),
-              //Spacer(),
-            ]),
-          ),
-          Positioned(
-            bottom: 0,
-            child: InkWell(
-              onTap: (() {}),
-              child: Container(
-                  height: 59.58,
-                  width: 364.96,
-                  decoration: BoxDecoration(
-                    color: Color(0xff3d84d9),
-                    borderRadius: BorderRadius.circular(53.19),
-                  ),
-                  child: Center(
-                    child: Text("Add new Task"),
-                  )),
             ),
-          ),
-          Positioned(
-              top: 496.51,
-              child: Container(
-                height: 70,
-                width: 300,
-                color: Colors.amberAccent,
-              )),
-        ],
+            Positioned(
+              bottom: 0,
+              child: InkWell(
+                onTap: (() {}),
+                child: Container(
+                    height: 59.58,
+                    width: 364.96,
+                    decoration: BoxDecoration(
+                      color: Color(0xff3d84d9),
+                      borderRadius: BorderRadius.circular(53.19),
+                    ),
+                    child: Center(
+                      child: Text("Add new Task"),
+                    )),
+              ),
+            ),
+          ],
+        ),
       ),
-    ),
-  ));
+    );
+  }
 }
