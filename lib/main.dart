@@ -40,6 +40,7 @@ void main() {
                         children: [Center(child: Text("Study lesson"))],
                       ),
                     ),
+                    Checkbox(value: true, onChanged: ((value) {})),
                   ],
                 ),
               ),
@@ -57,10 +58,11 @@ void main() {
                       child: Column(
                         children: [
                           Center(child: Text("Run 5k")),
-                          Text("4.00 pm")
+                          Text("4.00 pm"),
                         ],
                       ),
                     ),
+                    Checkbox(value: true, onChanged: ((value) {})),
                   ],
                 ),
               ),
@@ -79,6 +81,7 @@ void main() {
                         Text("10.00 pm")
                       ],
                     ),
+                    Checkbox(value: true, onChanged: ((value) {})),
                   ],
                 ),
               ),
@@ -103,7 +106,7 @@ void main() {
             ),
           ),
           Positioned(
-              top: 500,
+              top: 496.51,
               child: Container(
                 height: 70,
                 width: 300,
