@@ -38,7 +38,7 @@ void main() {
                     Spacer(
                       flex: 1,
                     ),
-                    Icon(Icons.add),
+                    Image.asset('images/study.png'),
                     Spacer(
                       flex: 1,
                     ),
@@ -72,7 +72,7 @@ void main() {
                     Spacer(
                       flex: 1,
                     ),
-                    Icon(Icons.add),
+                    Image.asset('images/run.png'),
                     Spacer(
                       flex: 1,
                     ),
@@ -105,7 +105,7 @@ void main() {
                     Spacer(
                       flex: 1,
                     ),
-                    Icon(Icons.add),
+                    Image.asset('images/party.png'),
                     Spacer(
                       flex: 1,
                     ),
