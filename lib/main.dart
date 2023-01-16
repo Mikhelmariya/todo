@@ -1,7 +1,6 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:todo/screens/add_task_page.dart';
 import 'package:todo/widgets/tasklist.dart';
 
 void main() {
@@ -139,8 +138,13 @@ class Homepage extends StatelessWidget {
             ),
             Positioned(
               bottom: 0,
-              child: InkWell(
-                onTap: (() {}),
+              child: GestureDetector(
+                onTap: (() {
+                  print("inside");
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => AddTaskPage()),
+                  );
+                }),
                 child: Container(
                     height: 59.58,
                     width: 364.96,
