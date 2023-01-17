@@ -66,15 +66,59 @@ class AddTaskPage extends StatelessWidget {
               width: 304,
               child: Padding(
                 padding: const EdgeInsets.only(top: 13),
-                child: Container(
-                  child: ListView.builder(
-                      itemCount: 4,
-                      itemBuilder: ((context, index) {
-                        return createtask();
-                      })),
+                child: Row(
+                  children: [
+                    Image.asset('images/study.png'),
+                    Image.asset('images/run.png'),
+                    Image.asset('images/party.png'),
+                    // Image.asset('images/img1.png'),
+                    // Image.asset('images/img2.png'),
+                    // Image.asset('images/img3.png'),
+                  ],
+
+                  //child: ListView.builder(
+                  //    itemCount: 4,
+                  //   itemBuilder: ((context, index) {
+                  //    return createtask();
+                  //  })),
                 ),
               ),
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 19, left: 23),
+              child: Text(
+                "Date and time",
+                style: TextStyle(fontWeight: FontWeight.w600),
+              ),
+            ),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 7.29, left: 10),
+                  child: Container(
+                    width: 171.85,
+                    height: 50,
+                    decoration: BoxDecoration(color: Color(0xfffffffff)),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 16.41, left: 14.59),
+                      child: Text("18/12/23"),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 7.29, left: 23),
+                  child: Container(
+                    width: 171.85,
+                    height: 50,
+                    decoration: BoxDecoration(color: Color(0xfffffffff)),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 16.41, left: 14.59),
+                      child: Text("12:00 pm"),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         )),
       ]),
