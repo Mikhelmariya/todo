@@ -1,3 +1,4 @@
+import 'dart:html';
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
@@ -42,7 +43,23 @@ class AddTaskPage extends StatelessWidget {
                 style:
                     TextStyle(color: Colors.black, fontWeight: FontWeight.w400),
               ),
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.29, left: 23),
+              child: Container(
+                width: 351,
+                height: 50,
+                decoration: BoxDecoration(color: Color(0xfffffffff)),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 16.41, left: 14.59),
+                  child: Text("Go for shopping"),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 21.71, left: 23),
+              child: Text("Category"),
+            ),
           ],
         )),
       ]),
