@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:todo/widgets/createlist.dart';
 
 class AddTaskPage extends StatelessWidget {
   const AddTaskPage({super.key});
@@ -60,6 +61,20 @@ class AddTaskPage extends StatelessWidget {
               padding: const EdgeInsets.only(top: 21.71, left: 23),
               child: Text("Category"),
             ),
+            Container(
+              height: 50,
+              width: 304,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 13),
+                child: Container(
+                  child: ListView.builder(
+                      itemCount: 4,
+                      itemBuilder: ((context, index) {
+                        return createtask();
+                      })),
+                ),
+              ),
+            )
           ],
         )),
       ]),
