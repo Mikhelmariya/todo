@@ -92,6 +92,7 @@ class AddTaskPage extends StatelessWidget {
               ),
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 7.29, left: 10),
