@@ -27,7 +27,7 @@ class AddTaskPage extends StatelessWidget {
             child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 175.24, top: 31.58),
+              padding: const EdgeInsets.only(left: 17.24, top: 31.58),
               child: Text(
                 "Create new task",
                 style:
@@ -36,7 +36,7 @@ class AddTaskPage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(
-                right: 21,
+                left: 11,
                 top: 59.42,
               ),
               child: Text(
