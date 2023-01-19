@@ -93,17 +93,18 @@ class Homepage extends StatelessWidget {
                           })),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 70),
-                    child: Row(
-                      children: [
-                        Text(
+                  Row(
+                    //mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 470),
+                        child: Text(
                           "Completed",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, color: Colors.black),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
