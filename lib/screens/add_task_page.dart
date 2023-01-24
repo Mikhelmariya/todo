@@ -16,20 +16,6 @@ class AddTaskPage extends StatefulWidget {
 
 class _AddTaskPageState extends State<AddTaskPage> {
   DateTime selectedDate = DateTime.now();
-  // Future<Null> _selectDate(BuildContext context) async {
-  // final DateTime picked = await showDatePicker(
-  //     context: context,
-  //     initialDate: selectedDate,
-  //     initialDatePickerMode: DatePickerMode.day,
-  //     firstDate: DateTime(2015),
-  //     lastDate: DateTime(2101));
-  // if (picked != null)
-  //   setState(() {
-  //     selectedDate = picked;
-  //     _dateController.text = DateFormat.yMd().format(selectedDate);
-  //   });
-  //}
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -39,7 +25,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
       body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          //width: 398.95,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(45.59),
             color: Color(0xffF1F5F9),
@@ -94,12 +79,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
                           // Image.asset('images/img2.png'),
                           // Image.asset('images/img3.png'),
                         ],
-
-                        //child: ListView.builder(
-                        //    itemCount: 4,
-                        //   itemBuilder: ((context, index) {
-                        //    return createtask();
-                        //  })),
                       ),
                     ),
                     Padding(
@@ -109,30 +88,35 @@ class _AddTaskPageState extends State<AddTaskPage> {
                         style: TextStyle(fontWeight: FontWeight.w600),
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 171.85,
-                          height: 50,
-                          decoration: BoxDecoration(color: Color(0xfffffffff)),
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.only(top: 16.41, left: 14.59),
-                            child: Text("date"),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 171.85,
+                            height: 50,
+                            decoration:
+                                BoxDecoration(color: Color(0xfffffffff)),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 16.41, left: 14.59),
+                              child: Text("date"),
+                            ),
                           ),
-                        ),
-                        Container(
-                          width: 171.85,
-                          height: 50,
-                          decoration: BoxDecoration(color: Color(0xfffffffff)),
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.only(top: 16.41, left: 14.59),
-                            child: Text("12:00 pm"),
+                          Container(
+                            width: 171.85,
+                            height: 50,
+                            decoration:
+                                BoxDecoration(color: Color(0xfffffffff)),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 16.41, left: 14.59),
+                              child: Text("12:00 pm"),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),
