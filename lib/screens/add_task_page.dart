@@ -63,7 +63,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     Text(
                       "Task Title",
                       style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.w400),
+                          color: Colors.black, fontWeight: FontWeight.bold),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 8.29),
@@ -78,29 +78,28 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 21.71),
-                      child: Text("Category"),
+                      child: Text(
+                        "Category",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     ),
-                    Container(
-                      height: 50,
-                      width: 304,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 13),
-                        child: Row(
-                          children: [
-                            Image.asset('images/study.png'),
-                            Image.asset('images/run.png'),
-                            Image.asset('images/party.png'),
-                            // Image.asset('images/img1.png'),
-                            // Image.asset('images/img2.png'),
-                            // Image.asset('images/img3.png'),
-                          ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 13),
+                      child: Row(
+                        children: [
+                          Image.asset('images/study.png'),
+                          Image.asset('images/run.png'),
+                          Image.asset('images/party.png'),
+                          //Image.asset('images/img1.png'),
+                          // Image.asset('images/img2.png'),
+                          // Image.asset('images/img3.png'),
+                        ],
 
-                          //child: ListView.builder(
-                          //    itemCount: 4,
-                          //   itemBuilder: ((context, index) {
-                          //    return createtask();
-                          //  })),
-                        ),
+                        //child: ListView.builder(
+                        //    itemCount: 4,
+                        //   itemBuilder: ((context, index) {
+                        //    return createtask();
+                        //  })),
                       ),
                     ),
                     Padding(
@@ -113,44 +112,24 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        //                      InkWell(
-                        // onTap: () {
-                        //   _selectDate(context);
-                        // },
-                        // child: Container(
-                        //   width: _width / 1.7,
-                        //   height: _height / 9,
-                        //   margin: EdgeInsets.only(top: 30),
-                        //   alignment: Alignment.center,
-                        //   decoration: BoxDecoration(color: Colors.grey[200]),
-                        //   child: TextFormField(
-                        //     style: TextStyle(fontSize: 40),
-                        //     textAlign: TextAlign.center,
-                        //     enabled: false,
-                        //     keyboardType: TextInputType.text,
-                        //     controller: _dateController,
-                        //     onSaved: (String val) {
-                        //       _setDate = val;
-                        ///    },
-//       decoration: InputDecoration(
-//           disabledBorder:
-//               UnderlineInputBorder(borderSide: BorderSide.none),
-//          contentPadding: EdgeInsets.only(top: 0.0)),
-//     ),
-//   ),
-// ),,
-                        Padding(
-                          padding: const EdgeInsets.only(top: 7.29, left: 23),
-                          child: Container(
-                            width: 171.85,
-                            height: 50,
-                            decoration:
-                                BoxDecoration(color: Color(0xfffffffff)),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 16.41, left: 14.59),
-                              child: Text("12:00 pm"),
-                            ),
+                        Container(
+                          width: 171.85,
+                          height: 50,
+                          decoration: BoxDecoration(color: Color(0xfffffffff)),
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.only(top: 16.41, left: 14.59),
+                            child: Text("date"),
+                          ),
+                        ),
+                        Container(
+                          width: 171.85,
+                          height: 50,
+                          decoration: BoxDecoration(color: Color(0xfffffffff)),
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.only(top: 16.41, left: 14.59),
+                            child: Text("12:00 pm"),
                           ),
                         ),
                       ],
