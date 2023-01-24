@@ -94,7 +94,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Container(
-                            width: 171.85,
+                            width: 351 / 2,
                             height: 50,
                             decoration:
                                 BoxDecoration(color: Color(0xfffffffff)),
@@ -105,7 +105,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                             ),
                           ),
                           Container(
-                            width: 171.85,
+                            // width: 351 / 2,
                             height: 50,
                             decoration:
                                 BoxDecoration(color: Color(0xfffffffff)),
