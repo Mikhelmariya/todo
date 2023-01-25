@@ -60,6 +60,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                         height: 50,
                         decoration: BoxDecoration(color: Color(0xfffffffff)),
                         child: TextField(
+                          keyboardType: TextInputType.text,
                           controller: task,
                           decoration: InputDecoration(
                             hintText: "Enter task to be done",
@@ -130,6 +131,12 @@ class _AddTaskPageState extends State<AddTaskPage> {
                   ],
                 ),
               ),
+              ElevatedButton(
+                  onPressed: () {
+                    String userTask = task.toString();
+                    print("userTask: $userTask");
+                  },
+                  child: Text("ADD TASK"))
             ],
           )),
     );
