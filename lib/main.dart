@@ -72,7 +72,7 @@ class Homepage extends StatelessWidget {
                     ]),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 165),
+                    padding: const EdgeInsets.only(top: 150),
                     child: Text(
                       "Completed",
                       style: TextStyle(fontWeight: FontWeight.bold),
@@ -81,7 +81,7 @@ class Homepage extends StatelessWidget {
                 ]),
                 SingleChildScrollView(
                   child: Container(
-                    height: 70 * 2,
+                    height: 58 * 2,
                     width: 364,
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -99,32 +99,32 @@ class Homepage extends StatelessWidget {
                         })),
                   ),
                 ),
-                // GestureDetector(
-                //   onTap: (() {
-                //     Navigator.push(
-                //       context,
-                //       MaterialPageRoute(
-                //           builder: (context) => const AddTaskPage()),
-                //     );
-                //   }),
-                //   child: Container(
-                //       alignment: Alignment.bottomCenter,
-                //       height: 59.58,
-                //       width: 364.96,
-                //       decoration: BoxDecoration(
-                //         color: Color(0xff3d84d9),
-                //         borderRadius: BorderRadius.circular(53.19),
-                //       ),
-                //       child: Center(
-                //         child: Text("Add new Task"),
-                //       )),
-                // )
+                GestureDetector(
+                  onTap: (() {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AddTaskPage()),
+                    );
+                  }),
+                  child: Container(
+                      alignment: Alignment.bottomCenter,
+                      height: 40,
+                      width: 364.96,
+                      decoration: BoxDecoration(
+                        color: Color(0xff3d84d9),
+                        borderRadius: BorderRadius.circular(53.19),
+                      ),
+                      child: Center(
+                        child: Text("Add new Task"),
+                      )),
+                )
               ],
             ),
           ),
           Center(
             child: Container(
-              height: 70 * 3,
+              height: 58 * 3,
               width: 364,
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(17)),
