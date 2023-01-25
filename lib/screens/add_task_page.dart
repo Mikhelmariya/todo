@@ -131,12 +131,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                   ],
                 ),
               ),
-              ElevatedButton(
-                  onPressed: () {
-                    String userTask = task.toString();
-                    print("userTask: $userTask");
-                  },
-                  child: Text("ADD TASK"))
+              ElevatedButton(onPressed: () {}, child: Text("ADD TASK"))
             ],
           )),
     );

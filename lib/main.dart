@@ -8,10 +8,7 @@ void main() {
 }
 
 class Homepage extends StatelessWidget {
-  const Homepage({
-    Key? key,
-  }) : super(key: key);
-
+  var taskFromAddtask;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
