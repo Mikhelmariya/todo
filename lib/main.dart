@@ -8,7 +8,6 @@ void main() {
 }
 
 class Homepage extends StatelessWidget {
-  var taskFromAddtask;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

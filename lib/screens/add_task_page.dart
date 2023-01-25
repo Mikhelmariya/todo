@@ -34,8 +34,11 @@ class _AddTaskPageState extends State<AddTaskPage> {
           ),
           child: Column(
             children: [
+              Align(
+                alignment: Alignment.topCenter,
+              ),
               Padding(
-                padding: const EdgeInsets.only(left: 17.24, top: 31.58),
+                padding: const EdgeInsets.only(top: 20),
                 child: Text(
                   "Create new task",
                   style: TextStyle(
@@ -43,95 +46,89 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: size.width / 5, vertical: 40),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                padding: const EdgeInsets.only(top: 30),
+                child: Text(
+                  "Task Title",
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Container(
+                  width: 351,
+                  height: 50,
+                  decoration: BoxDecoration(color: Color(0xfffffffff)),
+                  child: TextField(
+                    keyboardType: TextInputType.text,
+                    controller: task,
+                    decoration: InputDecoration(
+                      hintText: "Enter task to be done",
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Text(
+                  "Category",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "Task Title",
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.29),
-                      child: Container(
-                        width: 351,
-                        height: 50,
-                        decoration: BoxDecoration(color: Color(0xfffffffff)),
-                        child: TextField(
-                          keyboardType: TextInputType.text,
-                          controller: task,
+                    Image.asset('images/study.png'),
+                    Image.asset('images/run.png'),
+                    Image.asset('images/party.png'),
+                    Image.asset('images/img1.png'),
+                    Image.asset('images/img2.png'),
+                    Image.asset('images/img3.png'),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Text(
+                  "Date and time",
+                  style: TextStyle(fontWeight: FontWeight.w600),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 175.5,
+                      height: 50,
+                      decoration: BoxDecoration(color: Color(0xfffffffff)),
+                      child: TextField(
                           decoration: InputDecoration(
-                            hintText: "Enter task to be done",
-                            border: OutlineInputBorder(),
-                          ),
-                        ),
-                      ),
+                              hintText: "Date", border: OutlineInputBorder())),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 21.71),
-                      child: Text(
-                        "Category",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 13),
-                      child: Row(
-                        children: [
-                          Image.asset('images/study.png'),
-                          Image.asset('images/run.png'),
-                          Image.asset('images/party.png'),
-                          //Image.asset('images/img1.png'),
-                          // Image.asset('images/img2.png'),
-                          // Image.asset('images/img3.png'),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 19),
-                      child: Text(
-                        "Date and time",
-                        style: TextStyle(fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: 351 / 2,
-                            height: 50,
-                            decoration:
-                                BoxDecoration(color: Color(0xfffffffff)),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 16.41, left: 14.59),
-                              child: TextField(
-                                  decoration: InputDecoration(
-                                      border: OutlineInputBorder())),
-                            ),
-                          ),
-                          Container(
-                            // width: 351 / 2,
-                            height: 50,
-                            decoration:
-                                BoxDecoration(color: Color(0xfffffffff)),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 16.41, left: 14.59),
-                              child: Text("12:00 pm"),
-                            ),
-                          ),
-                        ],
-                      ),
+                    Container(
+                      width: 175.5,
+                      height: 50,
+                      decoration: BoxDecoration(color: Color(0xfffffffff)),
+                      child: TextField(
+                          decoration: InputDecoration(
+                              hintText: "Time", border: OutlineInputBorder())),
                     ),
                   ],
                 ),
               ),
-              ElevatedButton(onPressed: () {}, child: Text("ADD TASK"))
+              Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child:
+                    ElevatedButton(onPressed: () {}, child: Text("ADD TASK")),
+              ),
+              Spacer(
+                flex: 1,
+              ),
             ],
           )),
     );
