@@ -15,6 +15,9 @@ class AddTaskPage extends StatefulWidget {
 }
 
 class _AddTaskPageState extends State<AddTaskPage> {
+  var task = TextEditingController();
+  var date = TextEditingController();
+  var time = TextEditingController();
   DateTime selectedDate = DateTime.now();
   @override
   Widget build(BuildContext context) {
@@ -56,8 +59,12 @@ class _AddTaskPageState extends State<AddTaskPage> {
                         width: 351,
                         height: 50,
                         decoration: BoxDecoration(color: Color(0xfffffffff)),
-                        child: TextFormField(
-                          controller: taskTitleController,
+                        child: TextField(
+                          controller: task,
+                          decoration: InputDecoration(
+                            hintText: "Enter task to be done",
+                            border: OutlineInputBorder(),
+                          ),
                         ),
                       ),
                     ),
@@ -101,7 +108,9 @@ class _AddTaskPageState extends State<AddTaskPage> {
                             child: Padding(
                               padding: const EdgeInsets.only(
                                   top: 16.41, left: 14.59),
-                              child: Text("date"),
+                              child: TextField(
+                                  decoration: InputDecoration(
+                                      border: OutlineInputBorder())),
                             ),
                           ),
                           Container(
