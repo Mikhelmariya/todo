@@ -15,83 +15,88 @@ class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        color: Color(0xfff6f5f8),
-        child: Column(
-          children: [
-            Column(
+      body: Stack(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            color: Color(0xfff6f5f8),
+            child: Column(
               children: [
-                Container(
-                  height: 250,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('images/todo.png'),
-                          fit: BoxFit.cover)),
-                  child: Column(children: [
-                    Align(
-                      alignment: Alignment.topCenter,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 17),
-                        child: Text("Task Manager",
-                            style: TextStyle(
-                                fontWeight: FontWeight.normal,
-                                color: Colors.white,
-                                fontSize: 17)),
-                      ),
+                Column(
+                  children: [
+                    Container(
+                      height: 250,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage('images/todo.png'),
+                              fit: BoxFit.cover)),
+                      child: Column(children: [
+                        Align(
+                          alignment: Alignment.topCenter,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 17),
+                            child: Text("Task Manager",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.white,
+                                    fontSize: 17)),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 63.42),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Icons.arrow_back_ios_rounded,
+                                      color: Colors.white,
+                                    )),
+                                Text(
+                                  "December",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                      fontSize: 28),
+                                ),
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Icons.arrow_forward_ios_rounded,
+                                      color: Colors.white,
+                                    )),
+                              ]),
+                        ),
+                      ]),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 63.42),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            IconButton(
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.arrow_back_ios_rounded,
-                                  color: Colors.white,
-                                )),
-                            Text(
-                              "December",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  fontSize: 28),
-                            ),
-                            IconButton(
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.arrow_forward_ios_rounded,
-                                  color: Colors.white,
-                                )),
-                          ]),
-                    ),
-                  ]),
-                ),
-                Container(
-                  height: 70 * 3,
-                  width: 364,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(17)),
-                  child: ListView.separated(
-                      separatorBuilder: (context, index) {
-                        return Divider(
-                          height: 1,
-                          color: Colors.grey,
-                        );
-                      },
-                      itemCount: 3,
-                      itemBuilder: ((context, index) {
-                        return TaskList();
-                      })),
+                  ],
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+          Center(
+            child: Container(
+              height: 70 * 3,
+              width: 364,
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(17)),
+              child: ListView.separated(
+                  separatorBuilder: (context, index) {
+                    return Divider(
+                      height: 1,
+                      color: Colors.grey,
+                    );
+                  },
+                  itemCount: 3,
+                  itemBuilder: ((context, index) {
+                    return TaskList();
+                  })),
+            ),
+          ),
+        ],
       ),
     );
   }
