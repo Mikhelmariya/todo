@@ -142,6 +142,18 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     },
                     child: Text("Select date")),
               ),
+              ElevatedButton(
+                  onPressed: () async {
+                    TimeOfDay? pickedTime = await showTimePicker(
+                        context: context,
+                        initialTime: TimeOfDay.now(),
+                        initialEntryMode: TimePickerEntryMode.input);
+                    if (pickedTime != null) {
+                      print(
+                          'Time selected ${pickedTime.hour} : ${pickedTime.minute}');
+                    }
+                  },
+                  child: Text("select time")),
               Spacer(
                 flex: 1,
               ),
