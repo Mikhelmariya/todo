@@ -126,6 +126,22 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 child:
                     ElevatedButton(onPressed: () {}, child: Text("ADD TASK")),
               ),
+              Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: ElevatedButton(
+                    onPressed: () async {
+                      DateTime? datePicked = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(2023),
+                          lastDate: DateTime(2029));
+                      if (datePicked != null) {
+                        print(
+                            'Date selected : ${datePicked.day}--${datePicked.month}--${datePicked.year}');
+                      }
+                    },
+                    child: Text("Select date")),
+              ),
               Spacer(
                 flex: 1,
               ),
