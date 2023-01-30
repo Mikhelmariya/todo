@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:todo/widgets/createlist.dart';
+import 'package:todo/widgets/tasklist.dart';
 
 class AddTaskPage extends StatefulWidget {
   const AddTaskPage({super.key});
@@ -125,6 +126,11 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 padding: const EdgeInsets.only(top: 30),
                 child: ElevatedButton(
                     onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: ((context) =>
+                                  TaskList(task.text.toString()))));
                       String usertask = task.text.toString();
                       print("task : $usertask");
                     },

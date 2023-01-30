@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TaskList extends StatelessWidget {
-  //var task = TextEditingController();
-  TaskList();
+  var taskfrom;
+  TaskList(taskfrom);
   @override
   Widget build(BuildContext context) {
-    var text = ["Study time", "run", "party"];
     return Container(
       height: 58,
       child: Row(
@@ -22,8 +21,8 @@ class TaskList extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Study time"),
-                Text("4.00 pm"),
+                Text(""),
+                Text(""),
               ],
             ),
           ),
