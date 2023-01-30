@@ -16,12 +16,14 @@ class AddTaskPage extends StatefulWidget {
 }
 
 class _AddTaskPageState extends State<AddTaskPage> {
+  Tasktext todo = Tasktext(text: "");
   var task = TextEditingController();
   var date = TextEditingController();
   var time = TextEditingController();
   DateTime selectedDate = DateTime.now();
   @override
   Widget build(BuildContext context) {
+    final _todocontroller = TextEditingController();
     var size = MediaQuery.of(context).size;
     TextEditingController taskTitleController = TextEditingController();
 
@@ -62,7 +64,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                   decoration: BoxDecoration(color: Color(0xfffffffff)),
                   child: TextField(
                     keyboardType: TextInputType.text,
-                    controller: task,
+                    controller: _todocontroller,
                     decoration: InputDecoration(
                       hintText: "Enter task to be done",
                       border: OutlineInputBorder(),

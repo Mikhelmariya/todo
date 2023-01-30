@@ -10,7 +10,6 @@ void main() {
 class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Tasktext t1;
     return Scaffold(
       body: Stack(
         children: [
@@ -140,6 +139,10 @@ class Homepage extends StatelessWidget {
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        Padding(
+                          padding: const EdgeInsets.all(17).copyWith(left: 12),
+                          child: Image.asset(myicon[index].icon),
+                        ),
                         Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -196,4 +199,15 @@ List<Tasktime> times = [
   Tasktime(time: "4:00 pm"),
   Tasktime(time: "3:00 pm"),
   Tasktime(time: "2:00 pm")
+];
+
+class Myicon {
+  String icon;
+  Myicon({required this.icon});
+}
+
+List<Myicon> myicon = [
+  Myicon(icon: "images/study.png"),
+  Myicon(icon: "images/run.png"),
+  Myicon(icon: "images/party.png")
 ];
