@@ -10,6 +10,7 @@ void main() {
 class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //var text = ["Study time", "Run", "Party"];
     return Scaffold(
       body: Stack(
         children: [
@@ -71,7 +72,9 @@ class Homepage extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 150),
                     child: Text(
                       "Completed",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ]),

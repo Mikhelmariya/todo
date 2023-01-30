@@ -5,6 +5,7 @@ class TaskList extends StatelessWidget {
   TaskList();
   @override
   Widget build(BuildContext context) {
+    var text = ["Study time", "run", "party"];
     return Container(
       height: 58,
       child: Row(
@@ -21,11 +22,12 @@ class TaskList extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Welocome"),
+                Text("Study time"),
                 Text("4.00 pm"),
               ],
             ),
           ),
+
           // SizedBox(
           //  width: 10,
           // ),
@@ -41,3 +43,16 @@ class TaskList extends StatelessWidget {
     );
   }
 }
+
+class Todo {
+  Todo({required this.text, required this.id, this.isdone = false});
+  String text;
+  String id;
+  bool isdone;
+}
+
+List<Todo> todolist = [
+  Todo(id: '01', text: "study", isdone: true),
+  Todo(id: '02', text: "run", isdone: true),
+  Todo(id: '03', text: "party", isdone: true)
+];

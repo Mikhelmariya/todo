@@ -123,8 +123,12 @@ class _AddTaskPageState extends State<AddTaskPage> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 30),
-                child:
-                    ElevatedButton(onPressed: () {}, child: Text("ADD TASK")),
+                child: ElevatedButton(
+                    onPressed: () {
+                      String usertask = task.text.toString();
+                      print("task : $usertask");
+                    },
+                    child: Text("ADD TASK")),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 30),
