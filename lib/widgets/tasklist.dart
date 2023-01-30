@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../todo.dart';
+
 class TaskList extends StatelessWidget {
-  var taskfrom;
-  TaskList(taskfrom);
+  TaskList(String text);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,27 +17,33 @@ class TaskList extends StatelessWidget {
             padding: const EdgeInsets.all(17).copyWith(left: 12),
             child: Image.asset('images/study.png'),
           ),
-
           Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(""),
-                Text(""),
-              ],
+            child: ListView.builder(
+              itemCount: tasks.length,
+              itemBuilder: (context, index) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(tasks[index].toString(),
+                        style:
+                            TextStyle(decoration: TextDecoration.lineThrough)),
+                    Text("4:00 pm"),
+                  ],
+                );
+              },
             ),
           ),
-
-          // SizedBox(
-          //  width: 10,
-          // ),
           Spacer(
             flex: 1,
           ),
           Padding(
             padding: const EdgeInsets.all(30),
-            child: Checkbox(value: true, onChanged: ((value) {})),
+            child: Checkbox(
+                value: true,
+                onChanged: ((value) {
+                  print("clicked");
+                })),
           ),
         ],
       ),
@@ -43,15 +51,13 @@ class TaskList extends StatelessWidget {
   }
 }
 
-class Todo {
-  Todo({required this.text, required this.id, this.isdone = false});
+class Tasktext {
   String text;
-  String id;
-  bool isdone;
+  Tasktext({required this.text});
 }
 
-List<Todo> todolist = [
-  Todo(id: '01', text: "study", isdone: true),
-  Todo(id: '02', text: "run", isdone: true),
-  Todo(id: '03', text: "party", isdone: true)
+List<Tasktext> tasks = [
+  Tasktext(text: "Study time"),
+  Tasktext(text: "Run time"),
+  Tasktext(text: "party time")
 ];

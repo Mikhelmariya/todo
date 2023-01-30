@@ -10,8 +10,7 @@ void main() {
 class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //var text = ["Study time", "Run", "Party"];
-    var taskfrom;
+    Tasktext t1;
     return Scaffold(
       body: Stack(
         children: [
@@ -95,7 +94,7 @@ class Homepage extends StatelessWidget {
                         },
                         itemCount: 2,
                         itemBuilder: ((context, index) {
-                          return TaskList(taskfrom);
+                          return TaskList("");
                         })),
                   ),
                 ),
@@ -128,19 +127,45 @@ class Homepage extends StatelessWidget {
               width: 364,
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(17)),
-              child: TaskList(""),
-
-              // child: ListView.separated(
-              //     separatorBuilder: (context, index) {
-              //       return Divider(
-              //         height: 1,
-              //         color: Colors.grey,
-              //       );
-              //     },
-              //     itemCount: 3,
-              //     itemBuilder: ((context, index) {
-              //       return TaskList(taskfrom);
-              //     })),
+              child: ListView.separated(
+                  separatorBuilder: (context, index) {
+                    return Divider(
+                      height: 1,
+                      color: Colors.grey,
+                    );
+                  },
+                  itemCount: tasks.length,
+                  itemBuilder: ((context, index) {
+                    //return TaskList(tasks[index].toString());
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(tasks[index].text.toString(),
+                                  style: TextStyle(
+                                      decoration: tasks[index].isdone
+                                          ? TextDecoration.lineThrough
+                                          : null)),
+                              Text(times[index].time.toString()),
+                            ],
+                          ),
+                        ),
+                        Spacer(
+                          flex: 1,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(30),
+                          child: Checkbox(
+                              value: tasks[index].isdone ? true : false,
+                              onChanged: ((value) {})),
+                        ),
+                      ],
+                    );
+                  })),
             ),
           ),
         ],
@@ -148,3 +173,27 @@ class Homepage extends StatelessWidget {
     );
   }
 }
+
+class Tasktext {
+  String text;
+  String id;
+  bool isdone;
+  Tasktext({required this.text, required this.id, this.isdone = false});
+}
+
+List<Tasktext> tasks = [
+  Tasktext(text: "Study time", id: '01', isdone: true),
+  Tasktext(text: "Run time", id: '02', isdone: false),
+  Tasktext(text: "party time", id: '03', isdone: false)
+];
+
+class Tasktime {
+  String time;
+  Tasktime({required this.time});
+}
+
+List<Tasktime> times = [
+  Tasktime(time: "4:00 pm"),
+  Tasktime(time: "3:00 pm"),
+  Tasktime(time: "2:00 pm")
+];

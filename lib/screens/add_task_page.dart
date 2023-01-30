@@ -126,11 +126,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 padding: const EdgeInsets.only(top: 30),
                 child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: ((context) =>
-                                  TaskList(task.text.toString()))));
                       String usertask = task.text.toString();
                       print("task : $usertask");
                     },
