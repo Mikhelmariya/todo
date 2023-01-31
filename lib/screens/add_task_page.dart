@@ -7,6 +7,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:todo/widgets/createlist.dart';
 import 'package:todo/widgets/tasklist.dart';
+import 'package:todo/models/tasktext.dart';
 
 class AddTaskPage extends StatefulWidget {
   const AddTaskPage({super.key});
@@ -16,7 +17,7 @@ class AddTaskPage extends StatefulWidget {
 }
 
 class _AddTaskPageState extends State<AddTaskPage> {
-  Tasktext todo = Tasktext(text: "");
+  //Tasktext todo = Tasktext(text: "");
   var task = TextEditingController();
   var date = TextEditingController();
   var time = TextEditingController();

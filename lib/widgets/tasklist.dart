@@ -1,57 +1,54 @@
 import 'package:flutter/material.dart';
 
 import '../todo.dart';
+import 'package:todo/models/tasktext.dart';
 
-class TaskList extends StatelessWidget {
+class TaskList extends StatefulWidget {
   TaskList({required this.task});
-  final TaskList task;
+  final Tasktext task;
 
   @override
+  State<TaskList> createState() => _TaskListState();
+}
+
+class _TaskListState extends State<TaskList> {
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 58,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(17).copyWith(left: 12),
-            child: Image.asset('images/study.png'),
-          ),
-          Center(
-              child: Column(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(17).copyWith(left: 12),
+          child: Image.asset(widget.task.icon),
+        ),
+        Center(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("",
-                  style: TextStyle(decoration: TextDecoration.lineThrough)),
-              Text("4:00 pm"),
+              Text(widget.task.text,
+                  style: TextStyle(
+                      decoration: widget.task.isdone
+                          ? TextDecoration.lineThrough
+                          : null)),
+              Text(widget.task.time),
             ],
-          )),
-          Spacer(
-            flex: 1,
           ),
-          Padding(
-            padding: const EdgeInsets.all(30),
-            child: Checkbox(
-                value: true,
-                onChanged: ((value) {
-                  print("clicked");
-                })),
-          ),
-        ],
-      ),
+        ),
+        Spacer(
+          flex: 1,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(30),
+          child: Checkbox(
+              value: widget.task.isdone,
+              onChanged: ((value) {
+                widget.task.isdone = value!;
+                print(value);
+                setState(() {});
+              })),
+        ),
+      ],
     );
   }
 }
-
-class Tasktext {
-  String text;
-  Tasktext({required this.text});
-}
-
-List<Tasktext> tasks = [
-  Tasktext(text: "Study time"),
-  Tasktext(text: "Run time"),
-  Tasktext(text: "party time")
-];

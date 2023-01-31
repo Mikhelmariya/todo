@@ -3,6 +3,8 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:todo/screens/add_task_page.dart';
 import 'package:todo/widgets/tasklist.dart';
 
+import 'models/tasktext.dart';
+
 void main() {
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: Homepage()));
 }
@@ -67,37 +69,7 @@ class Homepage extends StatelessWidget {
                       ),
                     ]),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 150),
-                    child: Text(
-                      "Completed",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
                 ]),
-                SingleChildScrollView(
-                  child: Container(
-                    height: 58 * 2,
-                    width: 364,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(17)),
-                    child: ListView.separated(
-                        separatorBuilder: (context, index) {
-                          return Divider(
-                            height: 1,
-                            color: Colors.grey,
-                          );
-                        },
-                        itemCount: 2,
-                        itemBuilder: ((context, index) {
-                          return TaskList(task: ,
-                          );
-                        })),
-                  ),
-                ),
                 GestureDetector(
                   onTap: (() {
                     Navigator.push(
@@ -122,54 +94,64 @@ class Homepage extends StatelessWidget {
             ),
           ),
           Center(
-            child: Container(
-              height: 58 * 3,
-              width: 364,
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(17)),
-              child: ListView.separated(
-                  separatorBuilder: (context, index) {
-                    return Divider(
-                      height: 1,
-                      color: Colors.grey,
-                    );
-                  },
-                  itemCount: tasks.length,
-                  itemBuilder: ((context, index) {
-                    //return TaskList(tasks[index].toString());
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(17).copyWith(left: 12),
-                          child: Image.asset(myicon[index].icon),
+            child: Positioned(
+              bottom: 0,
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height / 1.5,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 90 * tasks.length.toDouble(),
+                        width: 364,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(17)),
+                        child: ListView.separated(
+                            physics: NeverScrollableScrollPhysics(),
+                            separatorBuilder: (context, index) {
+                              return Divider(
+                                height: 1,
+                                color: Colors.grey,
+                              );
+                            },
+                            itemCount: tasks.length,
+                            itemBuilder: ((context, index) {
+                              //return TaskList(tasks[index].toString());
+                              return TaskList(task: tasks[index]);
+                            })),
+                      ),
+                      Text(
+                        "Completed",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
                         ),
-                        Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(tasks[index].text.toString(),
-                                  style: TextStyle(
-                                      decoration: tasks[index].isdone
-                                          ? TextDecoration.lineThrough
-                                          : null)),
-                              Text(times[index].time.toString()),
-                            ],
-                          ),
-                        ),
-                        Spacer(
-                          flex: 1,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(30),
-                          child: Checkbox(
-                              value: tasks[index].isdone ? true : false,
-                              onChanged: ((value) {})),
-                        ),
-                      ],
-                    );
-                  })),
+                      ),
+                      Container(
+                        height: 90 * tasks.length.toDouble(),
+                        width: 364,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(17)),
+                        child: ListView.separated(
+                            physics: NeverScrollableScrollPhysics(),
+                            separatorBuilder: (context, index) {
+                              return Divider(
+                                height: 1,
+                                color: Colors.grey,
+                              );
+                            },
+                            itemCount: tasks.length,
+                            itemBuilder: ((context, index) {
+                              return TaskList(
+                                task: tasks[index],
+                              );
+                            })),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
           ),
         ],
@@ -177,38 +159,3 @@ class Homepage extends StatelessWidget {
     );
   }
 }
-
-class Tasktext {
-  String text;
-  String id;
-  bool isdone;
-  Tasktext({required this.text, required this.id, this.isdone = false});
-}
-
-List<Tasktext> tasks = [
-  Tasktext(text: "Study time", id: '01', isdone: true),
-  Tasktext(text: "Run time", id: '02', isdone: false),
-  Tasktext(text: "party time", id: '03', isdone: false)
-];
-
-class Tasktime {
-  String time;
-  Tasktime({required this.time});
-}
-
-List<Tasktime> times = [
-  Tasktime(time: "4:00 pm"),
-  Tasktime(time: "3:00 pm"),
-  Tasktime(time: "2:00 pm")
-];
-
-class Myicon {
-  String icon;
-  Myicon({required this.icon});
-}
-
-List<Myicon> myicon = [
-  Myicon(icon: "images/study.png"),
-  Myicon(icon: "images/run.png"),
-  Myicon(icon: "images/party.png")
-];
