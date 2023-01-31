@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import '../todo.dart';
 
 class TaskList extends StatelessWidget {
-  TaskList(String text);
+  TaskList({required this.task});
+  final TaskList task;
 
   @override
   Widget build(BuildContext context) {
@@ -18,22 +19,15 @@ class TaskList extends StatelessWidget {
             child: Image.asset('images/study.png'),
           ),
           Center(
-            child: ListView.builder(
-              itemCount: tasks.length,
-              itemBuilder: (context, index) {
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(tasks[index].toString(),
-                        style:
-                            TextStyle(decoration: TextDecoration.lineThrough)),
-                    Text("4:00 pm"),
-                  ],
-                );
-              },
-            ),
-          ),
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("",
+                  style: TextStyle(decoration: TextDecoration.lineThrough)),
+              Text("4:00 pm"),
+            ],
+          )),
           Spacer(
             flex: 1,
           ),
