@@ -13,6 +13,7 @@ class Tasktext {
   });
 }
 
+//List<Tasktext> tasks = [];
 List<Tasktext> tasks = [
   Tasktext(
       text: "",

@@ -15,6 +15,23 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  Iterable<Tasktext> completedtasklist = [];
+  Iterable<Tasktext> tasklist = [];
+  void updatelist() {
+    setState(() {
+      completedtasklist = tasks.where((element) => element.isdone);
+      tasklist = tasks.where((element) => !element.isdone);
+    });
+    print("enter");
+  }
+
+  @override
+  void initState() {
+    updatelist();
+    // TODO: implement initState constrtr
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,57 +100,74 @@ class _HomepageState extends State<Homepage> {
               bottom: 0,
               child: SizedBox(
                 height: MediaQuery.of(context).size.height / 1.5,
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 90 * tasks.length.toDouble(),
-                        width: 364,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(17)),
-                        child: ListView.separated(
-                            physics: NeverScrollableScrollPhysics(),
-                            separatorBuilder: (context, index) {
-                              return Divider(
-                                height: 1,
-                                color: Colors.grey,
-                              );
-                            },
-                            itemCount: tasks.length,
-                            itemBuilder: ((context, index) {
-                              //return TaskList(tasks[index].toString());
-                              return TaskList(task: tasks[index]);
-                            })),
-                      ),
-                      Text(
-                        "Completed",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
+                child: RefreshIndicator(
+                  onRefresh: () async {
+                    return updatelist();
+                  },
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 90 * tasklist.length.toDouble(),
+                          width: 364,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(17)),
+                          child: ListView.separated(
+                              physics: NeverScrollableScrollPhysics(),
+                              separatorBuilder: (context, index) {
+                                return Divider(
+                                  height: 1,
+                                  color: Colors.grey,
+                                );
+                              },
+                              itemCount: tasklist.length,
+                              itemBuilder: ((context, index) {
+                                //return TaskList(tasks[index].toString());
+                                return TaskList(
+                                  task: tasklist.elementAt(index),
+                                  update: () {
+                                    setState(() {
+                                      updatelist();
+                                    });
+                                  },
+                                );
+                              })),
                         ),
-                      ),
-                      Container(
-                        height: 90 * tasks.length.toDouble(),
-                        width: 364,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(17)),
-                        child: ListView.separated(
-                            physics: NeverScrollableScrollPhysics(),
-                            separatorBuilder: (context, index) {
-                              return Divider(
-                                height: 1,
-                                color: Colors.grey,
-                              );
-                            },
-                            itemCount: tasks.length,
-                            itemBuilder: ((context, index) {
-                              return TaskList(
-                                task: tasks[index],
-                              );
-                            })),
-                      ),
-                    ],
+                        Text(
+                          "Completed",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Container(
+                          height: 90 * completedtasklist.length.toDouble(),
+                          width: 364,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(17)),
+                          child: ListView.separated(
+                              physics: NeverScrollableScrollPhysics(),
+                              separatorBuilder: (context, index) {
+                                return Divider(
+                                  height: 1,
+                                  color: Colors.grey,
+                                );
+                              },
+                              itemCount: completedtasklist.length,
+                              itemBuilder: ((context, index) {
+                                return TaskList(
+                                  task: completedtasklist.elementAt(index),
+                                  update: () {
+                                    setState(() {
+                                      updatelist();
+                                    });
+                                  },
+                                );
+                              })),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -147,7 +181,9 @@ class _HomepageState extends State<Homepage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const AddTaskPage()),
-                );
+                ).then((value) {
+                  setState(() {});
+                });
               }),
               child: Container(
                   alignment: Alignment.bottomCenter,

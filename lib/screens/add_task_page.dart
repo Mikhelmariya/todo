@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:todo/main.dart';
 import 'package:todo/widgets/createlist.dart';
 import 'package:todo/widgets/tasklist.dart';
 import 'package:todo/models/tasktext.dart';
@@ -17,16 +18,17 @@ class AddTaskPage extends StatefulWidget {
 }
 
 class _AddTaskPageState extends State<AddTaskPage> {
-  List<Tasktext> tasks = [];
+  //List<Tasktext> tasks = [];
+  //final Tasktext object;
   final _task = TextEditingController();
   final _date = TextEditingController();
   final _time = TextEditingController();
-  void _addTodoItem() {
+  void _addTodoItem(String text) {
     setState(() {
-      tasks.add(Tasktext(
-          text: _task.text, id: '6', time: '9', icon: "images/study.png"));
+      tasks.add(
+          Tasktext(text: text, id: '6', time: '9', icon: "images/study.png"));
     });
-    print(_addTodoItem);
+    print(tasks.length);
     _task.clear();
   }
 
@@ -120,6 +122,20 @@ class _AddTaskPageState extends State<AddTaskPage> {
                       height: 50,
                       decoration: BoxDecoration(color: Color(0xfffffffff)),
                       child: TextField(
+                          controller: _date,
+                          onTap: () async {
+                            DateTime? datePicked = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2023),
+                                lastDate: DateTime(2029));
+                            if (datePicked != null) {
+                              _date.text =
+                                  ' ${datePicked.day}--${datePicked.month}--${datePicked.year}';
+                              print(
+                                  'Date selected : ${datePicked.day}--${datePicked.month}--${datePicked.year}');
+                            }
+                          },
                           decoration: InputDecoration(
                               hintText: "Date", border: OutlineInputBorder())),
                     ),
@@ -138,27 +154,13 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 padding: const EdgeInsets.only(top: 30),
                 child: ElevatedButton(
                     onPressed: () {
+                      print(tasks.length);
+
+                      _addTodoItem(_task.text);
+
                       Navigator.pop(context);
-                      _addTodoItem();
-                      print(_task);
                     },
                     child: Text("ADD TASK")),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 30),
-                child: ElevatedButton(
-                    onPressed: () async {
-                      DateTime? datePicked = await showDatePicker(
-                          context: context,
-                          initialDate: DateTime.now(),
-                          firstDate: DateTime(2023),
-                          lastDate: DateTime(2029));
-                      if (datePicked != null) {
-                        print(
-                            'Date selected : ${datePicked.day}--${datePicked.month}--${datePicked.year}');
-                      }
-                    },
-                    child: Text("Select date")),
               ),
               ElevatedButton(
                   onPressed: () async {
