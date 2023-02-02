@@ -75,26 +75,6 @@ class _HomepageState extends State<Homepage> {
                     ]),
                   ),
                 ]),
-                GestureDetector(
-                  onTap: (() {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const AddTaskPage()),
-                    );
-                  }),
-                  child: Container(
-                      alignment: Alignment.bottomCenter,
-                      height: 40,
-                      width: 364.96,
-                      decoration: BoxDecoration(
-                        color: Color(0xff3d84d9),
-                        borderRadius: BorderRadius.circular(53.19),
-                      ),
-                      child: Center(
-                        child: Text("Add new Task"),
-                      )),
-                )
               ],
             ),
           ),
@@ -159,6 +139,29 @@ class _HomepageState extends State<Homepage> {
               ),
             ),
           ),
+          Positioned(
+            bottom: 0,
+            left: MediaQuery.of(context).size.width / 2.8,
+            child: GestureDetector(
+              onTap: (() {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AddTaskPage()),
+                );
+              }),
+              child: Container(
+                  alignment: Alignment.bottomCenter,
+                  height: 40,
+                  width: 364.96,
+                  decoration: BoxDecoration(
+                    color: Color(0xff3d84d9),
+                    borderRadius: BorderRadius.circular(53.19),
+                  ),
+                  child: Center(
+                    child: Text("Add new Task"),
+                  )),
+            ),
+          )
         ],
       ),
     );

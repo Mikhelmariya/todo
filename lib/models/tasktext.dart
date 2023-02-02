@@ -15,7 +15,7 @@ class Tasktext {
 
 List<Tasktext> tasks = [
   Tasktext(
-      text: "Study time",
+      text: "",
       id: '01',
       time: '4:00 PM',
       isdone: true,

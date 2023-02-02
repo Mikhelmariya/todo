@@ -17,14 +17,23 @@ class AddTaskPage extends StatefulWidget {
 }
 
 class _AddTaskPageState extends State<AddTaskPage> {
-  //Tasktext todo = Tasktext(text: "");
-  var task = TextEditingController();
-  var date = TextEditingController();
-  var time = TextEditingController();
+  List<Tasktext> tasks = [];
+  final _task = TextEditingController();
+  final _date = TextEditingController();
+  final _time = TextEditingController();
+  void _addTodoItem() {
+    setState(() {
+      tasks.add(Tasktext(
+          text: _task.text, id: '6', time: '9', icon: "images/study.png"));
+    });
+    print(_addTodoItem);
+    _task.clear();
+  }
+
   DateTime selectedDate = DateTime.now();
   @override
   Widget build(BuildContext context) {
-    final _todocontroller = TextEditingController();
+    //final _todocontroller = TextEditingController();
     var size = MediaQuery.of(context).size;
     TextEditingController taskTitleController = TextEditingController();
 
@@ -65,7 +74,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                   decoration: BoxDecoration(color: Color(0xfffffffff)),
                   child: TextField(
                     keyboardType: TextInputType.text,
-                    controller: _todocontroller,
+                    controller: _task,
                     decoration: InputDecoration(
                       hintText: "Enter task to be done",
                       border: OutlineInputBorder(),
@@ -129,8 +138,9 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 padding: const EdgeInsets.only(top: 30),
                 child: ElevatedButton(
                     onPressed: () {
-                      String usertask = task.text.toString();
-                      print("task : $usertask");
+                      Navigator.pop(context);
+                      _addTodoItem();
+                      print(_task);
                     },
                     child: Text("ADD TASK")),
               ),
