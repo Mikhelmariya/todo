@@ -144,6 +144,17 @@ class _AddTaskPageState extends State<AddTaskPage> {
                       height: 50,
                       decoration: BoxDecoration(color: Color(0xfffffffff)),
                       child: TextField(
+                          controller: _time,
+                          onTap: (() async {
+                            TimeOfDay? pickedTime = await showTimePicker(
+                                context: context,
+                                initialTime: TimeOfDay.now(),
+                                initialEntryMode: TimePickerEntryMode.input);
+                            if (pickedTime != null) {
+                              _time.text =
+                                  '${pickedTime.hour} : ${pickedTime.minute}';
+                            }
+                          }),
                           decoration: InputDecoration(
                               hintText: "Time", border: OutlineInputBorder())),
                     ),
@@ -162,18 +173,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     },
                     child: Text("ADD TASK")),
               ),
-              ElevatedButton(
-                  onPressed: () async {
-                    TimeOfDay? pickedTime = await showTimePicker(
-                        context: context,
-                        initialTime: TimeOfDay.now(),
-                        initialEntryMode: TimePickerEntryMode.input);
-                    if (pickedTime != null) {
-                      print(
-                          'Time selected ${pickedTime.hour} : ${pickedTime.minute}');
-                    }
-                  },
-                  child: Text("select time")),
               Spacer(
                 flex: 1,
               ),
