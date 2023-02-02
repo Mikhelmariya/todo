@@ -39,3 +39,5 @@ List<Tasktext> tasks = [
       time: '5:00 pm',
       icon: "images/run.png")
 ];
+
+List<Tasktext> tasks_completed = [];
