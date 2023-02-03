@@ -61,7 +61,7 @@ class _HomepageState extends State<Homepage> {
   //final _mybox = Hive.box('mybox');
   @override
   void initState() {
-    // tasks = [];
+    tasks = [];
     mybox = Hive.box('mybox');
 
     var variable = mybox.get("TODOLIST");
@@ -170,7 +170,7 @@ class _HomepageState extends State<Homepage> {
                               },
                               itemCount: tasklist.length,
                               itemBuilder: ((context, index) {
-                                // return TaskList(tasks[index].toString());
+                                //return TaskList(tasks[index].toString());
                                 return TaskList(
                                   task: tasklist.elementAt(index),
                                   update: () {
@@ -211,7 +211,6 @@ class _HomepageState extends State<Homepage> {
                                       updatelist();
                                     });
                                   },
-                                  
                                 );
                               })),
                         ),
