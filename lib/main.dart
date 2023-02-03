@@ -1,32 +1,79 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:todo/screens/add_task_page.dart';
+import 'package:todo/todo_storage.dart';
 import 'package:todo/widgets/tasklist.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'models/tasktext.dart';
 
-void main() {
+void main() async {
+  // initialize hive
+  // Initialize hive
+  await Hive.initFlutter();
+  // Registering the adapter
+  Hive.registerAdapter(TasktextAdapter());
+  await Hive.openBox('mybox');
+
+  // open box
+  //var path = Directory.current.path;
+
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: Homepage()));
 }
 
 class Homepage extends StatefulWidget {
+  const Homepage({super.key});
+
   @override
   State<Homepage> createState() => _HomepageState();
 }
 
+var mybox;
+
 class _HomepageState extends State<Homepage> {
   Iterable<Tasktext> completedtasklist = [];
   Iterable<Tasktext> tasklist = [];
+
+  TodoDatabase db = TodoDatabase();
+
+  var nameValue = "No value saved";
   void updatelist() {
     setState(() {
       completedtasklist = tasks.where((element) => element.isdone);
       tasklist = tasks.where((element) => !element.isdone);
     });
-    print("enter");
   }
 
+  void getValue() async {
+    var Prefs = await SharedPreferences.getInstance();
+    var getname = Prefs.getString("task");
+
+    setState(() {
+      nameValue = getname != null ? getname : 'no value saved';
+    });
+  }
+
+  //final _mybox = Hive.box('mybox');
   @override
   void initState() {
+    // tasks = [];
+    mybox = Hive.box('mybox');
+
+    var variable = mybox.get("TODOLIST");
+    print("init" + variable.toString());
+
+    if (mybox.get("TODOLIST") == null) {
+      db.initial();
+    } else {
+      db.loadData();
+      updatelist();
+      setState(() {});
+    }
     updatelist();
     // TODO: implement initState constrtr
     super.initState();
@@ -129,6 +176,7 @@ class _HomepageState extends State<Homepage> {
                                   update: () {
                                     setState(() {
                                       updatelist();
+                                      getValue();
                                     });
                                   },
                                 );
