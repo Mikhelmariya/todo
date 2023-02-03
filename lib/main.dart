@@ -170,7 +170,7 @@ class _HomepageState extends State<Homepage> {
                               },
                               itemCount: tasklist.length,
                               itemBuilder: ((context, index) {
-                                //return TaskList(tasks[index].toString());
+                                // return TaskList(tasks[index].toString());
                                 return TaskList(
                                   task: tasklist.elementAt(index),
                                   update: () {
@@ -211,6 +211,7 @@ class _HomepageState extends State<Homepage> {
                                       updatelist();
                                     });
                                   },
+                                  
                                 );
                               })),
                         ),
