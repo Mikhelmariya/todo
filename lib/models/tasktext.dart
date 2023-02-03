@@ -1,8 +1,18 @@
-class Tasktext {
+import 'package:hive/hive.dart';
+
+part 'tasktext.g.dart';
+
+@HiveType(typeId: 1)
+class Tasktext extends HiveObject {
+  @HiveField(0)
   String text;
+  @HiveField(1)
   String id;
+  @HiveField(2)
   String time;
+  @HiveField(3)
   String icon;
+  @HiveField(4)
   bool isdone;
   Tasktext({
     required this.text,

@@ -5,7 +5,7 @@ import '../todo.dart';
 import 'package:todo/models/tasktext.dart';
 
 class TaskList extends StatelessWidget {
-  TaskList({required this.task, required this.update});
+  TaskList(required Tasktext task, {required this.task, required this.update});
   final Tasktext task;
   final Function update;
 

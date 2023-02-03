@@ -5,7 +5,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo/main.dart';
+import 'package:todo/todo_storage.dart';
 import 'package:todo/widgets/createlist.dart';
 import 'package:todo/widgets/tasklist.dart';
 import 'package:todo/models/tasktext.dart';
@@ -18,21 +21,29 @@ class AddTaskPage extends StatefulWidget {
 }
 
 class _AddTaskPageState extends State<AddTaskPage> {
-  //List<Tasktext> tasks = [];
-  //final Tasktext object;
+  //referencing hive
+  final _mybox = Hive.box('mybox');
+  static const String KEYNAME = "task";
+  var nameValue = "No value saved";
+  TodoDatabase db = TodoDatabase();
+
   final _task = TextEditingController();
   final _date = TextEditingController();
   final _time = TextEditingController();
-  void _addTodoItem(String text) {
+  void _addTodoItem(String text, String time) {
     setState(() {
       tasks.add(
-          Tasktext(text: text, id: '6', time: '9', icon: "images/study.png"));
+          Tasktext(text: text, id: '07', time: time, icon: "images/study.png"));
     });
     print(tasks.length);
     _task.clear();
   }
 
   DateTime selectedDate = DateTime.now();
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     //final _todocontroller = TextEditingController();
@@ -96,7 +107,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset('images/study.png'),
                     Image.asset('images/run.png'),
                     Image.asset('images/party.png'),
                     Image.asset('images/img1.png'),
@@ -164,14 +174,16 @@ class _AddTaskPageState extends State<AddTaskPage> {
               Padding(
                 padding: const EdgeInsets.only(top: 30),
                 child: ElevatedButton(
-                    onPressed: () {
-                      print(tasks.length);
-
-                      _addTodoItem(_task.text);
+                    onPressed: () async {
+                      _addTodoItem(_task.text, _time.text);
+                      // var sharedPref = await SharedPreferences.getInstance();
+                      //sharedPref.setString('task', _task.text);
+                      setState(() {});
+                      db.updateDatabase();
 
                       Navigator.pop(context);
                     },
-                    child: Text("ADD TASK")),
+                    child: Text("SAVE")),
               ),
               Spacer(
                 flex: 1,
@@ -181,3 +193,15 @@ class _AddTaskPageState extends State<AddTaskPage> {
     );
   }
 }
+
+class MyIcon {
+  MyIcon({required this.icon});
+  final String icon;
+}
+
+List<MyIcon> myIcons = [
+  MyIcon(icon: "images/run.png"),
+  MyIcon(
+    icon: "images/study.png",
+  ),
+];
