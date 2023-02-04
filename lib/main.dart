@@ -61,20 +61,21 @@ class _HomepageState extends State<Homepage> {
   //final _mybox = Hive.box('mybox');
   @override
   void initState() {
-    tasks = [];
+    // tasks = [];
     mybox = Hive.box('mybox');
+    var tasks = mybox.get("TODOLIST");
+    print("init" + tasks.toString());
 
-    var variable = mybox.get("TODOLIST");
-    print("init" + variable.toString());
-
-    if (mybox.get("TODOLIST") == null) {
-      db.initial();
-    } else {
-      db.loadData();
-      updatelist();
-      setState(() {});
-    }
+    // if (mybox.get("TODOLIST") == null) {
+    //   db.initial();
+    // }
+    db.loadData();
     updatelist();
+
+    setState(() {});
+
+    //updatelist();
+    //
     // TODO: implement initState constrtr
     super.initState();
   }

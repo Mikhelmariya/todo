@@ -179,6 +179,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                       // var sharedPref = await SharedPreferences.getInstance();
                       //sharedPref.setString('task', _task.text);
                       setState(() {});
+                      db.loadData();
                       db.updateDatabase();
 
                       Navigator.pop(context);

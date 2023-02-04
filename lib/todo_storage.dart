@@ -12,6 +12,7 @@ class TodoDatabase {
 
   void loadData() async {
     print("entered load");
+    print("init inside loadata" + tasks.toString());
 
     tasks = await mybox.get("TODOLIST");
     // print(tasks.toMap().toString() + "tasks");
@@ -20,7 +21,7 @@ class TodoDatabase {
 
   void updateDatabase() {
     mybox.put("TODOLIST", tasks);
-    var variable = mybox.get("TODOLIST");
-    print("init" + variable.toString());
+    tasks = mybox.get("TODOLIST");
+    print("init inside updatedatabase" + tasks.toString());
   }
 }
