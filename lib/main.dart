@@ -171,7 +171,7 @@ class _HomepageState extends State<Homepage> {
                                 var currentBox = box;
                                 var TODOdATA = currentBox.getAt(index)!;
                                 return TaskList(
-                                  task: tasklist.elementAt(index),
+                                  task: currentBox.getAt(index),
                                   update: () {
                                     setState(() {
                                       updatelist();
@@ -200,10 +200,12 @@ class _HomepageState extends State<Homepage> {
                                   color: Colors.grey,
                                 );
                               },
-                              itemCount: completedtasklist.length,
+                              itemCount: box.length,
                               itemBuilder: ((context, index) {
+                                var currentBox = box;
+                                var TODOdATA = currentBox.getAt(index)!;
                                 return TaskList(
-                                  task: completedtasklist.elementAt(index),
+                                  task: currentBox.getAt(index),
                                   update: () {
                                     setState(() {
                                       updatelist();

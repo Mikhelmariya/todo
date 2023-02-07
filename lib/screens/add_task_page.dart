@@ -31,7 +31,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
   final _date = TextEditingController();
   final _time = TextEditingController();
   void _addTodoItem(String text, String time) {
-    Tasktext tasks = Tasktext(text: text, id: '01', time: time, icon: "");
+    Tasktext tasks =
+        Tasktext(text: text, id: '01', time: time, icon: "images/run.png");
     box.add(tasks);
     print("info added to box");
     // setState(() {
@@ -140,7 +141,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                       child: TextField(
                           controller: _date,
                           onTap: () async {
-                            db.updateDatabase();
+                            // db.updateDatabase();
 
                             DateTime? datePicked = await showDatePicker(
                                 context: context,
@@ -164,7 +165,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                       child: TextField(
                           controller: _time,
                           onTap: (() async {
-                            db.updateDatabase();
+                            // db.updateDatabase();
 
                             TimeOfDay? pickedTime = await showTimePicker(
                                 context: context,
