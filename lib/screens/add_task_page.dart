@@ -22,26 +22,32 @@ class AddTaskPage extends StatefulWidget {
 
 class _AddTaskPageState extends State<AddTaskPage> {
   //referencing hive
-  final _mybox = Hive.box('mybox');
-  static const String KEYNAME = "task";
-  var nameValue = "No value saved";
+  // final _mybox = Hive.box('mybox');
+  late final Box box;
+
   TodoDatabase db = TodoDatabase();
 
   final _task = TextEditingController();
   final _date = TextEditingController();
   final _time = TextEditingController();
   void _addTodoItem(String text, String time) {
-    setState(() {
-      tasks.add(
-          Tasktext(text: text, id: '07', time: time, icon: "images/study.png"));
-    });
-    print(tasks.length);
-    _task.clear();
+    Tasktext tasks = Tasktext(text: text, id: '01', time: time, icon: "");
+    box.add(tasks);
+    print("info added to box");
+    // setState(() {
+    //   tasks.add(
+    //       Tasktext(text: text, id: '07', time: time, icon: "images/study.png"));
+    // });
+    // print(tasks.length);
+    // _task.clear();
   }
 
   DateTime selectedDate = DateTime.now();
+  @override
   void initState() {
     super.initState();
+    //reference
+    box = Hive.box('mybox');
   }
 
   @override
@@ -134,6 +140,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
                       child: TextField(
                           controller: _date,
                           onTap: () async {
+                            db.updateDatabase();
+
                             DateTime? datePicked = await showDatePicker(
                                 context: context,
                                 initialDate: DateTime.now(),
@@ -156,6 +164,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
                       child: TextField(
                           controller: _time,
                           onTap: (() async {
+                            db.updateDatabase();
+
                             TimeOfDay? pickedTime = await showTimePicker(
                                 context: context,
                                 initialTime: TimeOfDay.now(),
@@ -167,6 +177,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                           }),
                           decoration: InputDecoration(
                               hintText: "Time", border: OutlineInputBorder())),
+                      //db.updateDatabase();
                     ),
                   ],
                 ),
@@ -174,13 +185,13 @@ class _AddTaskPageState extends State<AddTaskPage> {
               Padding(
                 padding: const EdgeInsets.only(top: 30),
                 child: ElevatedButton(
-                    onPressed: () async {
+                    onPressed: () {
                       _addTodoItem(_task.text, _time.text);
                       // var sharedPref = await SharedPreferences.getInstance();
                       //sharedPref.setString('task', _task.text);
-                      setState(() {});
-                      db.loadData();
-                      db.updateDatabase();
+                      // setState(() {});
+                      // db.loadData();
+                      // db.updateDatabase();
 
                       Navigator.pop(context);
                     },
@@ -194,15 +205,3 @@ class _AddTaskPageState extends State<AddTaskPage> {
     );
   }
 }
-
-class MyIcon {
-  MyIcon({required this.icon});
-  final String icon;
-}
-
-List<MyIcon> myIcons = [
-  MyIcon(icon: "images/run.png"),
-  MyIcon(
-    icon: "images/study.png",
-  ),
-];

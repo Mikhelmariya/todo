@@ -22,6 +22,9 @@ class TodoDatabase {
   void updateDatabase() {
     mybox.put("TODOLIST", tasks);
     tasks = mybox.get("TODOLIST");
+
+    // updatelist();
+    //Navigator()
     print("init inside updatedatabase" + tasks.toString());
   }
 }

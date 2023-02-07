@@ -13,15 +13,11 @@ import 'package:path_provider/path_provider.dart';
 import 'models/tasktext.dart';
 
 void main() async {
-  // initialize hive
-  // Initialize hive
+  //initializing
   await Hive.initFlutter();
   // Registering the adapter
   Hive.registerAdapter(TasktextAdapter());
   await Hive.openBox('mybox');
-
-  // open box
-  //var path = Directory.current.path;
 
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: Homepage()));
 }
@@ -36,6 +32,13 @@ class Homepage extends StatefulWidget {
 var mybox;
 
 class _HomepageState extends State<Homepage> {
+  late final Box box;
+  @override
+  void dispose() {
+    Hive.close();
+    super.dispose();
+  }
+
   Iterable<Tasktext> completedtasklist = [];
   Iterable<Tasktext> tasklist = [];
 
@@ -49,35 +52,29 @@ class _HomepageState extends State<Homepage> {
     });
   }
 
-  void getValue() async {
-    var Prefs = await SharedPreferences.getInstance();
-    var getname = Prefs.getString("task");
-
-    setState(() {
-      nameValue = getname != null ? getname : 'no value saved';
-    });
-  }
-
   //final _mybox = Hive.box('mybox');
   @override
   void initState() {
-    // tasks = [];
-    mybox = Hive.box('mybox');
-    var tasks = mybox.get("TODOLIST");
-    print("init" + tasks.toString());
+    super.initState();
+
+    //tasks = [];
+    box = Hive.box('mybox');
+    //var tasks = mybox.get("TODOLIST");
+    //print("init" + tasks.toString());
+    //setState(() {});
 
     // if (mybox.get("TODOLIST") == null) {
     //   db.initial();
+    // } else {
+    //   db.loadData();
     // }
-    db.loadData();
     updatelist();
 
-    setState(() {});
+    //setState(() {});
 
     //updatelist();
     //
     // TODO: implement initState constrtr
-    super.initState();
   }
 
   @override
@@ -169,15 +166,15 @@ class _HomepageState extends State<Homepage> {
                                   color: Colors.grey,
                                 );
                               },
-                              itemCount: tasklist.length,
+                              itemCount: box.length,
                               itemBuilder: ((context, index) {
-                                //return TaskList(tasks[index].toString());
+                                var currentBox = box;
+                                var TODOdATA = currentBox.getAt(index)!;
                                 return TaskList(
                                   task: tasklist.elementAt(index),
                                   update: () {
                                     setState(() {
                                       updatelist();
-                                      getValue();
                                     });
                                   },
                                 );
@@ -224,7 +221,7 @@ class _HomepageState extends State<Homepage> {
           ),
           Positioned(
             bottom: 0,
-            left: MediaQuery.of(context).size.width / 2.8,
+            left: MediaQuery.of(context).size.width / 2.5,
             child: GestureDetector(
               onTap: (() {
                 Navigator.push(
