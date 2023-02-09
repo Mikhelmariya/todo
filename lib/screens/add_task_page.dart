@@ -178,7 +178,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
                           }),
                           decoration: InputDecoration(
                               hintText: "Time", border: OutlineInputBorder())),
-                      //db.updateDatabase();
                     ),
                   ],
                 ),
@@ -188,15 +187,9 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 child: ElevatedButton(
                     onPressed: () {
                       _addTodoItem(_task.text, _time.text);
-                      // var sharedPref = await SharedPreferences.getInstance();
-                      //sharedPref.setString('task', _task.text);
-                      // setState(() {});
-                      // db.loadData();
-                      // db.updateDatabase();
-
                       Navigator.pop(context);
                     },
-                    child: Text("SAVE")),
+                    child: Text("ADD TASK")),
               ),
               Spacer(
                 flex: 1,

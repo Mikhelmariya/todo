@@ -40,12 +40,25 @@ class _HomepageState extends State<Homepage> {
     super.dispose();
   }
 
-  Iterable<Tasktext> completedtasklist = [];
-  Iterable<Tasktext> tasklist = [];
+  List<Tasktext> completedTasks = [];
+
+  List<Tasktext> completedtasklist = []; //iterable initially
+  List<Tasktext> tasklist = []; //iterable initially
   void updatelist() {
     setState(() {
-      completedtasklist = tasks.where((element) => element.isdone);
-      tasklist = tasks.where((element) => !element.isdone);
+      //completedtasklist = tasks.where((element) => element.isdone);
+      var box = Hive.box('mybox');
+      var keys = box.keys.toList();
+      var completedtasklist = keys
+          .where((key) => box.get(key).isdone)
+          .map((key) => box.get(key))
+          .toList();
+      var tasklist = keys
+          .where((key) => box.get(key)!.isdone)
+          .map((key) => box.get(key))
+          .toList();
+
+      //tasklist = tasks.where((element) => !element.isdone);
     });
   }
 
@@ -177,12 +190,12 @@ class _HomepageState extends State<Homepage> {
                                 color: Colors.grey,
                               );
                             },
-                            itemCount: box.length,
+                            itemCount: completedtasklist.length,
                             itemBuilder: ((context, index) {
-                              var currentBox = box;
+                              //var currentBox = box;
                               // var TODOdATA = currentBox.getAt(index)!;
                               return TaskList(
-                                task: currentBox.getAt(index),
+                                task: completedtasklist[index],
                                 update: () {
                                   setState(() {
                                     updatelist();
