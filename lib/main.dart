@@ -33,6 +33,7 @@ var mybox;
 
 class _HomepageState extends State<Homepage> {
   late final Box box;
+
   @override
   void dispose() {
     Hive.close();
@@ -41,10 +42,6 @@ class _HomepageState extends State<Homepage> {
 
   Iterable<Tasktext> completedtasklist = [];
   Iterable<Tasktext> tasklist = [];
-
-  TodoDatabase db = TodoDatabase();
-
-  var nameValue = "No value saved";
   void updatelist() {
     setState(() {
       completedtasklist = tasks.where((element) => element.isdone);
@@ -52,29 +49,11 @@ class _HomepageState extends State<Homepage> {
     });
   }
 
-  //final _mybox = Hive.box('mybox');
   @override
   void initState() {
     super.initState();
-
-    //tasks = [];
     box = Hive.box('mybox');
-    //var tasks = mybox.get("TODOLIST");
-    //print("init" + tasks.toString());
-    //setState(() {});
-
-    // if (mybox.get("TODOLIST") == null) {
-    //   db.initial();
-    // } else {
-    //   db.loadData();
-    // }
     updatelist();
-
-    //setState(() {});
-
-    //updatelist();
-    //
-    // TODO: implement initState constrtr
   }
 
   @override
@@ -153,7 +132,7 @@ class _HomepageState extends State<Homepage> {
                     child: Column(
                       children: [
                         Container(
-                          height: 90 * tasklist.length.toDouble(),
+                          height: 90 * box.length.toDouble(),
                           width: 364,
                           decoration: BoxDecoration(
                               color: Colors.white,
@@ -169,7 +148,7 @@ class _HomepageState extends State<Homepage> {
                               itemCount: box.length,
                               itemBuilder: ((context, index) {
                                 var currentBox = box;
-                                var TODOdATA = currentBox.getAt(index)!;
+                                // var TODOdATA = currentBox.getAt(index)!;
                                 return TaskList(
                                   task: currentBox.getAt(index),
                                   update: () {
@@ -187,7 +166,7 @@ class _HomepageState extends State<Homepage> {
                           ),
                         ),
                         Container(
-                          height: 90 * completedtasklist.length.toDouble(),
+                          height: 90 * box.length.toDouble(),
                           width: 364,
                           decoration: BoxDecoration(
                               color: Colors.white,
@@ -203,7 +182,7 @@ class _HomepageState extends State<Homepage> {
                               itemCount: box.length,
                               itemBuilder: ((context, index) {
                                 var currentBox = box;
-                                var TODOdATA = currentBox.getAt(index)!;
+                                // var TODOdATA = currentBox.getAt(index)!;
                                 return TaskList(
                                   task: currentBox.getAt(index),
                                   update: () {
@@ -221,18 +200,17 @@ class _HomepageState extends State<Homepage> {
               ),
             ),
           ),
-          Positioned(
-            bottom: 0,
-            left: MediaQuery.of(context).size.width / 2.5,
-            child: GestureDetector(
-              onTap: (() {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const AddTaskPage()),
-                ).then((value) {
-                  setState(() {});
-                });
-              }),
+          GestureDetector(
+            onTap: (() {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AddTaskPage()),
+              ).then((value) {
+                setState(() {});
+              });
+            }),
+            child: Align(
+              alignment: Alignment.bottomCenter,
               child: Container(
                   alignment: Alignment.bottomCenter,
                   height: 40,
