@@ -120,81 +120,78 @@ class _HomepageState extends State<Homepage> {
             ),
           ),
           Center(
-            child: Positioned(
-              bottom: 0,
-              child: SizedBox(
-                height: MediaQuery.of(context).size.height / 1.5,
-                child: RefreshIndicator(
-                  onRefresh: () async {
-                    return updatelist();
-                  },
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Container(
-                          height: 90 * box.length.toDouble(),
-                          width: 364,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(17)),
-                          child: ListView.separated(
-                              physics: NeverScrollableScrollPhysics(),
-                              separatorBuilder: (context, index) {
-                                return Divider(
-                                  height: 1,
-                                  color: Colors.grey,
-                                );
-                              },
-                              itemCount: box.length,
-                              itemBuilder: ((context, index) {
-                                var currentBox = box;
-                                // var TODOdATA = currentBox.getAt(index)!;
-                                return TaskList(
-                                  task: currentBox.getAt(index),
-                                  update: () {
-                                    setState(() {
-                                      updatelist();
-                                    });
-                                  },
-                                );
-                              })),
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height / 2.5,
+              child: RefreshIndicator(
+                onRefresh: () async {
+                  return updatelist();
+                },
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 90 * box.length.toDouble(),
+                        width: 364,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(17)),
+                        child: ListView.separated(
+                            physics: NeverScrollableScrollPhysics(),
+                            separatorBuilder: (context, index) {
+                              return Divider(
+                                height: 1,
+                                color: Colors.grey,
+                              );
+                            },
+                            itemCount: box.length,
+                            itemBuilder: ((context, index) {
+                              // var currentBox = box;
+                              // var TODOdATA = currentBox.getAt(index)!;
+                              return TaskList(
+                                task: box.getAt(index),
+                                update: () {
+                                  setState(() {
+                                    updatelist();
+                                  });
+                                },
+                              );
+                            })),
+                      ),
+                      Text(
+                        "Completed",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
                         ),
-                        Text(
-                          "Completed",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Container(
-                          height: 90 * box.length.toDouble(),
-                          width: 364,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(17)),
-                          child: ListView.separated(
-                              physics: NeverScrollableScrollPhysics(),
-                              separatorBuilder: (context, index) {
-                                return Divider(
-                                  height: 1,
-                                  color: Colors.grey,
-                                );
-                              },
-                              itemCount: box.length,
-                              itemBuilder: ((context, index) {
-                                var currentBox = box;
-                                // var TODOdATA = currentBox.getAt(index)!;
-                                return TaskList(
-                                  task: currentBox.getAt(index),
-                                  update: () {
-                                    setState(() {
-                                      updatelist();
-                                    });
-                                  },
-                                );
-                              })),
-                        ),
-                      ],
-                    ),
+                      ),
+                      Container(
+                        height: 90 * box.length.toDouble(),
+                        width: 364,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(17)),
+                        child: ListView.separated(
+                            physics: NeverScrollableScrollPhysics(),
+                            separatorBuilder: (context, index) {
+                              return Divider(
+                                height: 1,
+                                color: Colors.grey,
+                              );
+                            },
+                            itemCount: box.length,
+                            itemBuilder: ((context, index) {
+                              var currentBox = box;
+                              // var TODOdATA = currentBox.getAt(index)!;
+                              return TaskList(
+                                task: currentBox.getAt(index),
+                                update: () {
+                                  setState(() {
+                                    updatelist();
+                                  });
+                                },
+                              );
+                            })),
+                      ),
+                    ],
                   ),
                 ),
               ),
