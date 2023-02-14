@@ -42,23 +42,23 @@ class _HomepageState extends State<Homepage> {
 
   List<Tasktext> completedTasks = [];
 
-  List<Tasktext> completedtasklist = []; //iterable initially
-  List<Tasktext> tasklist = []; //iterable initially
+  Iterable<Tasktext> completedtasklist = []; //iterable initially
+  Iterable<Tasktext> tasklist = []; //iterable initially
   void updatelist() {
     setState(() {
-      //completedtasklist = tasks.where((element) => element.isdone);
-      var box = Hive.box('mybox');
-      var keys = box.keys.toList();
-      var completedtasklist = keys
-          .where((key) => box.get(key).isdone)
-          .map((key) => box.get(key))
-          .toList();
-      var tasklist = keys
-          .where((key) => box.get(key)!.isdone)
-          .map((key) => box.get(key))
-          .toList();
+      completedtasklist = tasks.where((element) => element.isdone);
+      // var box = Hive.box('mybox');
+      // var keys = box.keys.toList();
+      // var completedtasklist = keys
+      //     .where((key) => box.get(key).isdone)
+      //     .map((key) => box.get(key))
+      //     .toList();
+      // var tasklist = keys
+      //     .where((key) => box.get(key)!.isdone)
+      //     .map((key) => box.get(key))
+      //     .toList();
 
-      //tasklist = tasks.where((element) => !element.isdone);
+      tasklist = tasks.where((element) => !element.isdone);
     });
   }
 
@@ -195,7 +195,7 @@ class _HomepageState extends State<Homepage> {
                               //var currentBox = box;
                               // var TODOdATA = currentBox.getAt(index)!;
                               return TaskList(
-                                task: completedtasklist[index],
+                                task: tasks[index],
                                 update: () {
                                   setState(() {
                                     updatelist();
