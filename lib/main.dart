@@ -44,9 +44,12 @@ class _HomepageState extends State<Homepage> {
 
   Iterable<Tasktext> completedtasklist = []; //iterable initially
   Iterable<Tasktext> tasklist = []; //iterable initially
+
   void updatelist() {
     setState(() {
-      completedtasklist = tasks.where((element) => element.isdone);
+      tasklist = box.values as Iterable<Tasktext>;
+      completedtasklist =
+          tasklist.where((element) => element.isdone) as Iterable<Tasktext>;
       // var box = Hive.box('mybox');
       // var keys = box.keys.toList();
       // var completedtasklist = keys
@@ -156,7 +159,7 @@ class _HomepageState extends State<Homepage> {
                                 color: Colors.grey,
                               );
                             },
-                            itemCount: box.length,
+                            itemCount: completedtasklist.length,
                             itemBuilder: ((context, index) {
                               // var currentBox = box;
                               // var TODOdATA = currentBox.getAt(index)!;
