@@ -42,14 +42,15 @@ class _HomepageState extends State<Homepage> {
 
   List<Tasktext> completedTasks = [];
 
-  Iterable<Tasktext> completedtasklist = []; //iterable initially
-  Iterable<Tasktext> tasklist = []; //iterable initially
+  List<dynamic> completedtasklist = []; //iterable initially
+  List<dynamic> tasklist = []; //iterable initially
 
   void updatelist() {
     setState(() {
-      tasklist = box.values as Iterable<Tasktext>;
+      // tasklist = box.values as Iterable<Tasktext>;
       completedtasklist =
-          tasklist.where((element) => element.isdone) as Iterable<Tasktext>;
+          box.values.where((element) => element.isdone).toList();
+      tasklist = box.values.where((element) => !element.isdone).toList();
       // var box = Hive.box('mybox');
       // var keys = box.keys.toList();
       // var completedtasklist = keys
@@ -61,7 +62,7 @@ class _HomepageState extends State<Homepage> {
       //     .map((key) => box.get(key))
       //     .toList();
 
-      tasklist = tasks.where((element) => !element.isdone);
+      // tasklist = tasks.where((element) => !element.isdone);
     });
   }
 
@@ -70,6 +71,7 @@ class _HomepageState extends State<Homepage> {
     super.initState();
     box = Hive.box('mybox');
     updatelist();
+    print("s");
   }
 
   @override
@@ -146,7 +148,7 @@ class _HomepageState extends State<Homepage> {
                   child: Column(
                     children: [
                       Container(
-                        height: 90 * box.length.toDouble(),
+                        height: 90 * tasklist.length.toDouble(),
                         width: 364,
                         decoration: BoxDecoration(
                             color: Colors.white,
@@ -159,12 +161,12 @@ class _HomepageState extends State<Homepage> {
                                 color: Colors.grey,
                               );
                             },
-                            itemCount: completedtasklist.length,
+                            itemCount: tasklist.length,
                             itemBuilder: ((context, index) {
                               // var currentBox = box;
                               // var TODOdATA = currentBox.getAt(index)!;
                               return TaskList(
-                                task: box.getAt(index),
+                                task: tasklist[index],
                                 update: () {
                                   setState(() {
                                     updatelist();
@@ -198,7 +200,7 @@ class _HomepageState extends State<Homepage> {
                               //var currentBox = box;
                               // var TODOdATA = currentBox.getAt(index)!;
                               return TaskList(
-                                task: tasks[index],
+                                task: completedtasklist[index],
                                 update: () {
                                   setState(() {
                                     updatelist();
