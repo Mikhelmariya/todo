@@ -187,7 +187,7 @@ class _HomepageState extends State<Homepage> {
                         ),
                       ),
                       Container(
-                        height: 90 * box.length.toDouble(),
+                        height: 90 * completedtasklist.length.toDouble(),
                         width: 364,
                         decoration: BoxDecoration(
                             color: Colors.white,
@@ -226,7 +226,9 @@ class _HomepageState extends State<Homepage> {
                 context,
                 MaterialPageRoute(builder: (context) => const AddTaskPage()),
               ).then((value) {
-                setState(() {});
+                setState(() {
+                  updatelist();
+                });
               });
             }),
             child: Align(
