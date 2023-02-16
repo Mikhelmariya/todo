@@ -40,7 +40,8 @@ class TaskList extends StatelessWidget {
               value: task.isdone,
               onChanged: ((value) {
                 task.isdone = value!;
-                print(value);
+                
+
                 update();
               })),
         ),

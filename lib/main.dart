@@ -52,23 +52,7 @@ class _HomepageState extends State<Homepage> {
       completedtasklist =
           box.values.where((element) => element.isdone).toList();
       tasklist = box.values.where((element) => !element.isdone).toList();
-      // tasklist = box.values as Iterable<Tasktext>;
-      //completedtasklist =
-      //   tasklist.where((element) => element.isdone) as Iterable<Tasktext>;
-      // box.values.where((element) => element.isdone).toList();
-
-      // var box = Hive.box('mybox');
-      // var keys = box.keys.toList();
-      // var completedtasklist = keys
-      //     .where((key) => box.get(key).isdone)
-      //     .map((key) => box.get(key))
-      //     .toList();
-      // var tasklist = keys
-      //     .where((key) => box.get(key)!.isdone)
-      //     .map((key) => box.get(key))
-      //     .toList();
-
-      //tasklist = tasks.where((element) => !element.isdone);
+      
     });
   }
 
@@ -173,6 +157,7 @@ class _HomepageState extends State<Homepage> {
                               return TaskList(
                                 task: tasklist[index],
                                 update: () {
+                                  
                                   setState(() {
                                     updatelist();
                                   });
@@ -226,9 +211,7 @@ class _HomepageState extends State<Homepage> {
                 context,
                 MaterialPageRoute(builder: (context) => const AddTaskPage()),
               ).then((value) {
-                setState(() {
-                  updatelist();
-                });
+                setState(() {});
               });
             }),
             child: Align(
